@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Canvas Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <!--
+        canvas is made by HTML + JS.
+        inside of <canvas></canvas> would be a area of canvas
+    -->
+    <canvas id="sketchbook" width="500" height="300"></canvas>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("sketchbook");
+
+            //to prevent executing function for canvas in the browser which doesn't available applying
+            //(IE etc)
+            if(canvas && canvas.getContext){
+                //set 2d context as canvas element named "ctx(context)"
+                var ctx = canvas.getContext("2d");
+                var ctxAdv = canvas.getContext("2d");
+                //set style
+                ctx.fillStyle = "#00C";
+                //render rectangle
+                ctx.fillRect(20, 20, 150, 80);//fillrect(x Coordinate(座標), y Coordinate, width, height)
+                
+                
+                //set border style
+                ctx.strokeStyle = "#F60";//color
+                ctx.lineWidth = 10;//border width
+                
+                //decrare for rendering starts
+                ctx.beginPath();
+
+                //set point with coordinate to make line
+                ctx.moveTo(50, 100);//base point - value.moveTo(x Coordinate, y Coordinate);
+                ctx.lineTo(250, 40);//1st destination point
+                ctx.lineTo(20, 150);//2nd destination point(starts from 1st destination)
+                ctx.lineTo(90, 350);
+                
+                ctx.moveTo(20, 200);//make secondary base point
+                ctx.lineTo(10, 10);//make 1st destination point of secondary base point
+                ctx.lineCap = "round";//to make round tip(rounded end point)
+                ctx.lineCap = "square";//to make square tip(squared end point)
+
+                //start rendering
+                ctx.stroke();
+
+
+
+                ///how to render rectangle
+                ctxAdv.fillStyle = "#090";
+                ctxAdv.strokeStyle = "#030";
+                ctxAdv.lineWidth = 5;
+                ctxAdv.fillRect(10, 10, 80, 120);
+                ctxAdv.strokeRect(0, 0, 90, 125);//to render rectangle frame
+                ctxAdv.clearRect(20, 20, 30, 30);//to erase partly or whole rectangle which is appeared
+
+                ///how to render circle
+                ctxAdv.beginPath();//declare for rendering starts
+                ctxAdv.fillStyle = "#600";
+                ctxAdv.strokeStyle = "#300";
+                ctxAdv.lineWidth = 10;
+
+                //preparation for making circle
+                //declare to render circle(x coordinate, y coordinate, radius, starting point, ending point, clockwise(false) or unclockwise(true))
+                // ctx.arc(200, 100, 25, 0, (1/4) * Math.PI, true);
+                // ctx.arc(200, 100, 25, 0, (1 / 4) * Math.PI, false);
+                
+                //in case of "x-100, y-150, radius-30, startsFrom-0, to-2π, clockwise"
+                ctx.arc(100, 150, 30, 0, 2 * Math.PI, false);
+
+                ctxAdv.stroke();//start rendering
+                ctxAdv.fill();//to filling color
+            }  
+        }
+    </script>
+</body>
+</html>

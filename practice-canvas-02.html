@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Canvas Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <canvas id="sketchbook" width="900" height="900"></canvas>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("sketchbook");
+
+            if(canvas && canvas.getContext){
+                var ctx = canvas.getContext("2d");
+                
+                ///Add text
+                //if specified style to character, character's color will change to the color specified by fillStyle
+                ctx.fillStyle = "#099";
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 2;
+                ctx.font = "30px sans-serif";//add font-size and font family
+                //rendering text(Word, x-coordinate, y-coordinate)
+                ctx.fillText("HELLO", 100, 50);
+                //apply result of ctx.strokeStyle and ctx.lineWidth
+                ctx.strokeText("HELLO", 100, 50)
+
+
+                ///Add rectangle and change position
+                ctx.fillStyle = "#c00";
+                ctx.fillRect(0, 0, 50, 50);
+                //initialise position and condition(expandX, degY, degX, expandY, coordinationX, coordinationY)
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                //rotate it(1/8π)
+                ctx.rotate((1/8) * Math.PI);
+                ctx.fillRect(50, 0, 50, 50);//render 2nd rect. if specified any color in fillStyle, style of fillRect will be apply the color.
+                ctx.rotate((1/8) * Math.PI);
+                ctx.fillRect(100, 0, 50, 50);//render 3rd rect
+
+
+                ///Add shadow
+                //on rectangle
+                ctx.fillStyle = "#0c0";
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.shadowColor = "#333";//set shadow color
+                ctx.shadowOffsetX = -2;//set shadow position-X
+                ctx.shadowOffsetY = 3;//set shadow position-Y
+                ctx.shadowBlur = 5;//add blur
+                ctx.fillRect(150, 150, 100, 100);
+
+                //on circle
+                ctx.beginPath();
+                ctx.arc(165, 165, 50, 0, 2 * Math.PI, false);
+                ctx.fill();
+
+                //on text
+                ctx.fillText("BAE", 250, 50);
+
+
+                ///Add linear gradient
+                //initialise(x-start, y-start, x-end, y-end)
+                var g = ctx.createLinearGradient(250, 250, 200, 300);
+                //add color on grad
+                g.addColorStop(0, "#00F");//1st
+                g.addColorStop(1, "#003");//2nd
+                g.addColorStop(0.3, "#CC0");//middle
+                ctx.fillStyle = g;//specifi color grad(what I made above)
+                ctx.fillRect(250, 250, 300, 300);
+            }
+        }
+    </script>
+</body>
+</html>

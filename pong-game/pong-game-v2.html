@@ -29,10 +29,11 @@
     <canvas id="game-canvas"></canvas>
     <script>
         var counter = 0;
+        var lastTime;//variable for store the time for last frame
 
         //this is for initialise each variable and add event handler.
         function init(){
-            console.log("This is inside of init function");
+            lastTime = performance.now();//store current time(as ms by using performance.now()) 
         }
         
         //this is for updating condition of this game
@@ -48,8 +49,19 @@
 
         //this is for invoking update() and render()
         function main(){
+            var now = performance.now();
+            var dt = now - lastTime;
+            var maxFrameTime = 1000 / 60;
+
+            if(dt > maxFrameTime){
+                dt = maxFrameTime;
+            }
+
             update();
             render();
+            //add current time to update the time last frame has done
+            lastTime = now;
+
             requestAnimationFrame(main);
             /*
             by using this function to invoke itself, 

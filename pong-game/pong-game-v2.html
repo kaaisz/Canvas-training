@@ -27,6 +27,41 @@
 </head>
 <body>
     <canvas id="game-canvas"></canvas>
-    <script></script>
+    <script>
+        var counter = 0;
+
+        //this is for initialise each variable and add event handler.
+        function init(){
+            console.log("This is inside of init function");
+        }
+        
+        //this is for updating condition of this game
+        function update(){
+            counter += 1;
+            console.log(counter);//counter will increase when update has been invoked 
+        }
+
+        //this is for rendering condition on canvas
+        function render(){
+            console.log("This is inside of render function");
+        }
+
+        //this is for invoking update() and render()
+        function main(){
+            update();
+            render();
+            requestAnimationFrame(main);
+            /*
+            by using this function to invoke itself, 
+            you can make loop to invoke main() per 16ms when main has been executed.
+            * when you want to pass function itself as a parameter, use function name as parameter(in case of "main()" must be name as "main").
+            * requestAnimationFrame is useful for game or animation due to be able to stop/intrrupt loop when it's not needed.
+            */
+        }
+
+        //execute funciton
+        init();//initialise game
+        main();//starting loop
+    </script>
 </body>
 </html>

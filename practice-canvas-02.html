@@ -69,6 +69,14 @@
                 g.addColorStop(0.3, "#CC0");//middle
                 ctx.fillStyle = g;//specifi color grad(what I made above)
                 ctx.fillRect(250, 250, 300, 300);
+
+                ///Add Radial gradient(startX, startY, startRadius, endX, endY, endRadius);
+                var r = ctx.createLinearGradient(740, 740, 5, 850, 850, 30);
+                r.addColorStop(0, "#00F");//1st
+                r.addColorStop(1, "#003");//2nd
+                r.addColorStop(0.3, "#CC0");//middle
+                ctx.fillStyle = r;
+                ctx.fillRect(400, 400, 300, 300);
             }
         }
     </script>

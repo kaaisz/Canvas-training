@@ -56,9 +56,14 @@
             if(dt > maxFrameTime){
                 dt = maxFrameTime;
             }
-
-            update();
-            render();
+            
+            /*
+            pass dt(time difference between last frame and current time) 
+            as a parameter for both update() and render() to update conditions 
+            of each frames
+            */
+            update(dt);
+            render(dt);
             //add current time to update the time last frame has done
             lastTime = now;
 

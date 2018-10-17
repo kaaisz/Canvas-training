@@ -48,6 +48,18 @@
             self.radius = 5;//set size of radius as 5
             self.x = x;
             self.y = y;
+
+            //set variable for making movement
+            self.velocityX = 0.4;
+            self.velocityY = 0.3;
+
+            //define function to update location of Puck
+            //* update is receiving dt as a parameter
+            self.update = function(dt){
+                //calc coodinate after it moved by multiplying elapsedTimeFromFrame * velocity
+                self.x += self.velocityX * dt;//for x-coordinate
+                self.y += self.velocityY * dt;
+            }
             
             //add function to render
             self.draw = function(context){
@@ -76,6 +88,7 @@
         function update(dt){
             counter += 1;
             console.log(counter);//counter will increase when update has been invoked 
+            puck.update(dt);//invoke puck.update() here by passing dt to parameter
         }
 
         //this is for rendering condition on canvas

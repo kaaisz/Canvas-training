@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pong Game - Pt.2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
     <style>
         html, body{
             margin:0;
@@ -29,7 +29,7 @@
     <canvas id="game-canvas"></canvas>
     <script>
         //setup canvas
-        var boardwidth = 512;
+        var boardWidth = 512;
         var boardHeight = 256;
         var canvas; //for global variable to refer from everywhere
         var context;//to activate functions of canvas
@@ -46,6 +46,7 @@
             canvas.height = boardHeight;
             //to preparing to render, get 2d context by using this below
             context = canvas.getContext("2d");
+
             lastTime = performance.now();//store current time(as ms by using performance.now()) 
         }
         
@@ -57,7 +58,11 @@
 
         //this is for rendering condition on canvas
         function render(dt){
-            console.log("This is inside of render function");
+            //draw circle
+            context.fillStyle = "white";//set the fillStyle to white
+            context.beginPath();
+            context.arc(100, 100, 9, 0, 2*Math.PI);
+            context.fill();
         }
 
         //this is for invoking update() and render()

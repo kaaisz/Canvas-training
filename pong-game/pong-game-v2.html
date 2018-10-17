@@ -70,6 +70,9 @@
         //Add instance of Puck
         var puck;
 
+        //Add instance of Paddle for each side
+        var paddle1;
+        var paddle2;
 
         //Add Puck object
         function Puck(x, y){//x and y is an initialised position
@@ -121,6 +124,32 @@
             }
         }
 
+        //this is for paddle part
+        function paddle(x){
+            var self = this;//define as same with inside of Puck()
+            
+            //x-coordination must be defined by parameter of class
+            //to prevent moving paddle, y-coordination must be defined by condition of program
+            self.x = x;
+            self.y = boardHeight / 2//initialize y-coordinate as centered on screen by "boardHeight(screen height)/2"
+            //define width and height for make paddle
+            self.halfWidth = 5;
+            self.halfHeight = 20;
+
+            //add function for rendering
+            self.draw = function(context){
+                context.fillStyle = "white";
+                context.fillRect(
+                    //to calc coordination of upper left side to make fillRect, make this formula below
+                    self.x - self.halfWidth,
+                    self.y - self.halfHeight,
+                    //calc width and height by multiply 2 below
+                    self.halfWidth * 2,
+                    self.halfHeight * 2
+                );
+            }
+        }
+
         //this is for initialise each variable and add event handler.
         function init(){
             //set width and height for canvas
@@ -129,6 +158,9 @@
             canvas.height = boardHeight;
             //add instance of Puck to make initialise point in this function
             puck = new Puck(100, 100);
+            //add instance of paddle
+            paddle1 = new Paddle(10);//10 pixel far from left side wall
+            paddle2 = new Paddle(boardWidth - 10);//10 pixel far from right side wall
             //to preparing to render, get 2d context by using this below
             context = canvas.getContext("2d");
 
@@ -151,8 +183,12 @@
             // context.beginPath();
             // context.arc(100, 100, 9, 0, 2*Math.PI);
             // context.fill();
-            //draw circle by using the technique like above with puck.draw()
+            //render circle by using the technique like above with puck.draw()
             puck.draw(context); 
+
+            //render paddle
+            paddle1.draw(context);
+            paddle2.draw(context);
         }
 
         //this is for invoking update() and render()

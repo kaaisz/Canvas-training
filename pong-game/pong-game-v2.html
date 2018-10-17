@@ -32,28 +32,28 @@
 </head>
 <body>
     <main>
-    <h2>Motion Like Pong</h2>
-    <h3>How to define logic</h3>
-    <p>In this case, defined each elements below</p>
-    <table>
-        <tr>
-            <th>Wall</th>
-            <td> : </td>
-            <td>outside of frame on Canvas</td>
-        </tr>
-        <tr>
-            <th>If part of puck was outside of wall</th>
-            <td> : </td>
-            <td>cross(should be bounce back)</td>
-        </tr>
-        <tr>
-            <th>If puck was crossing with any side of walls</th>
-            <td> : </td>
-            <td>flip velocity to change direction of puck</td>
-        </tr>
-    </table>
-    <p>Eg) In case of that puck has bounced back on the lower side of the wall:<br>
-    Solution : you can flip the direction vertically by multiplying <code>velocityY</code>> to <code>-1</code> (velocityY * -1)</p>
+        <h1>Pong version 2</h1>
+        <h2>How to define logic for motion</h2>
+        <p>In this case, defined each elements below</p>
+        <table>
+            <tr>
+                <th>Wall</th>
+                <td> : </td>
+                <td>outside of frame on Canvas</td>
+            </tr>
+            <tr>
+                <th>If part of puck was outside of wall</th>
+                <td> : </td>
+                <td>cross(should be bounce back)</td>
+            </tr>
+            <tr>
+                <th>If puck was crossing with any side of walls</th>
+                <td> : </td>
+                <td>flip velocity to change direction of puck</td>
+            </tr>
+        </table>
+        <p>Eg) In case of that puck has bounced back on the lower side of the wall:<br>
+        Solution : you can flip the direction vertically by multiplying <code>velocityY</code>> to <code>-1</code> (velocityY * -1)</p>
     </main>
     <canvas id="game-canvas"></canvas>
     <script>
@@ -125,7 +125,7 @@
         }
 
         //this is for paddle part
-        function paddle(x){
+        function Paddle(x){
             var self = this;//define as same with inside of Puck()
             
             //x-coordination must be defined by parameter of class

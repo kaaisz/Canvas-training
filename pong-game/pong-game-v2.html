@@ -32,6 +32,7 @@
         var boardwidth = 512;
         var boardHeight = 256;
         var canvas; //for global variable to refer from everywhere
+        var context;//to activate functions of canvas
 
         //setup time for calc elapsed time
         var counter = 0;
@@ -39,9 +40,12 @@
 
         //this is for initialise each variable and add event handler.
         function init(){
+            //set width and height for canvas
             canvas = document.getElementById("game-canvas");
             canvas.width = boardWidth;
             canvas.height = boardHeight;
+            //to preparing to render, get 2d context by using this below
+            context = canvas.getContext("2d");
             lastTime = performance.now();//store current time(as ms by using performance.now()) 
         }
         

@@ -38,12 +38,34 @@
         var counter = 0;
         var lastTime;//variable for store the time for last frame
 
+        //Add instance of Puck
+        var puck;
+
+
+        //Add Puck object
+        function Puck(x, y){//x and y is an initialised position
+            var self = this;//Add variable named 'self' to refer instance of Puck, instead of 'this'
+            self.radius = 5;//set size of radius as 5
+            self.x = x;
+            self.y = y;
+            
+            //add function to render
+            self.draw = function(context){
+                context.fillStyle = "white";
+                context.beginPath();//add new path on canvas
+                context.arc(self.x, self.y, self, radius, 0, 2*Math.PI);//add circle
+                context.fill();//render
+            }
+        }
+
         //this is for initialise each variable and add event handler.
         function init(){
             //set width and height for canvas
             canvas = document.getElementById("game-canvas");
             canvas.width = boardWidth;
             canvas.height = boardHeight;
+            //add instance of Puck to make initialise point in this function
+            puck = new Puck(100, 100);
             //to preparing to render, get 2d context by using this below
             context = canvas.getContext("2d");
 

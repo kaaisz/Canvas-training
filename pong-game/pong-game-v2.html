@@ -88,6 +88,28 @@
                 //calc coodinate after it moved by multiplying elapsedTimeFromFrame * velocity
                 self.x += self.velocityX * dt;//for x-coordinate
                 self.y += self.velocityY * dt;
+
+                //define bouncing of lower side wall
+                //* lowest coordination of puck can calc by (puck.y + puck.radius).
+                if(self.y + self.radius > boardHeight){//if coordination value of puck was bigger than boardHeight
+                    self.velocityY *= -1;//puck should be bouncing back vertically
+                }
+                //define bouncing of right side wall
+                //* use x, velocityX instead of y, velocityY
+                if(self.x + self.radius > boardWidth){
+                    self.velocityX *= -1;//puck should be bouncing back horizontally
+                }
+
+                //define bouncing of upper side wall
+                //* highest coordination of puck is 0.  
+                if(self.y - self.radius < 0){//if puck.y - puck.radius was smaller than 0
+                    self.velocityY *= -1;//puck should be bouncing back vertically
+                }
+
+                //define bouncing of left side wall
+                if(self.x - self.radius < 0){
+                    self.velocityX *= -1;
+                }
             }
             
             //add function to render

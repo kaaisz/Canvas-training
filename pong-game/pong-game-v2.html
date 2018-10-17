@@ -93,6 +93,9 @@
 
         //this is for rendering condition on canvas
         function render(dt){
+            // erase trace of Puck by initialization with using clearRect(startingPointX,startingPointY,value.width, value.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
             // context.fillStyle = "white";//set the fillStyle to white
             // context.beginPath();
             // context.arc(100, 100, 9, 0, 2*Math.PI);

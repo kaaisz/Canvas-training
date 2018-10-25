@@ -141,6 +141,10 @@
                 //Processing
             };
 
+            self.onKeyUp = function(keyCode){
+                //Processing
+            }
+
             //add function for rendering
             self.draw = function(context){
                 context.fillStyle = "white";
@@ -176,6 +180,14 @@
                 //invoke onKeyDown function
                 paddle1.onKeyDown(e.keyCode);//you can get keyCode by "e.keycode"
                 paddle2.onKeyDown(e.keyCode);
+            });
+            
+            //add event for when keyboard typing has been ended
+            document.addEventListener("keyup", function(e){
+                e.preventDefault();
+
+                paddle1.onKeyup(e.keycode);
+                paddle2.onKeyup(e.keyCode);
             });
 
             //to preparing to render, get 2d context by using this below

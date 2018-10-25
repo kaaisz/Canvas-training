@@ -166,6 +166,11 @@
                 }
             }
 
+            //to link key event and paddle
+            self.update = function(dt){//dt - elapsed time from last frame
+                //processing
+            };
+
             //add function for rendering
             self.draw = function(context){
                 context.fillStyle = "white";
@@ -222,6 +227,9 @@
             counter += 1;
             console.log(counter);//counter will increase when update has been invoked 
             puck.update(dt);//invoke puck.update() here by passing dt to parameter
+            //invoke update() of paddle1 and paddle2
+            paddle1.update(dt);
+            paddle2.update(dt);
         }
 
         //this is for rendering condition on canvas

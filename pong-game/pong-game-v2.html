@@ -147,11 +147,23 @@
 
             //add onKeyDown and onKeyUp to control paddle by cursor keyboard
             self.onKeyDown = function(keyCode){//keyCode identify which key has been typed
-                //Processing
+                //Processing - check condition of matching keyCode with either upKeyCode or downKeyCode
+                if(keyCode === self.upKeyCode){//if match with upKeyCode
+                    self.upButtonPressed = true;
+                }
+                if(keyCode === self.downKeyCode){//if match with downKeyCode
+                    self.downButtonPressed = true;
+                }
             };
 
             self.onKeyUp = function(keyCode){
                 //Processing
+                if(keyCode === self.upKeyCode){
+                    self.upButtonPressed = false;
+                }
+                if(keyCode === self.downKeyCode){
+                    self.downButtonPressed = false;
+                }
             }
 
             //add function for rendering

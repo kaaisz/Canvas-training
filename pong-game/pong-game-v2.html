@@ -33,6 +33,7 @@
 <body>
     <main>
         <h1>Pong version 2</h1>
+        <p>This has been developed based on <strong><a href="pong-game-v1.html">Pong Version 1</a></strong>.</p>
         <h2>How to define logic for motion</h2>
         <p>In this case, defined each elements below</p>
         <table>
@@ -136,6 +137,10 @@
             self.halfWidth = 5;
             self.halfHeight = 20;
 
+            self.onKeyDown = function(keyCode){//keyCode identify which key has been typed
+                //Processing
+            };
+
             //add function for rendering
             self.draw = function(context){
                 context.fillStyle = "white";
@@ -167,6 +172,10 @@
                 e.preventDeafault();
                 //invoke eventlistener with canceling default processing
                 //in this case, you can control paddle without scrolling of deafault keydown function in your browser.
+
+                //invoke onKeyDown function
+                paddle1.onKeyDown(e.keyCode);//you can get keyCode by "e.keycode"
+                paddle2.onKeyDown(e.keyCode);
             });
 
             //to preparing to render, get 2d context by using this below

@@ -136,7 +136,9 @@
             //define width and height for make paddle
             self.halfWidth = 5;
             self.halfHeight = 20;
+            self.moveSpeed = 0.5;
 
+            //add onKeyDown and onKeyUp to control paddle by cursor keyboard
             self.onKeyDown = function(keyCode){//keyCode identify which key has been typed
                 //Processing
             };
@@ -182,7 +184,7 @@
                 paddle2.onKeyDown(e.keyCode);
             });
             
-            //add event for when keyboard typing has been ended
+            //add event for when keyboard typing has been ended same as keydown
             document.addEventListener("keyup", function(e){
                 e.preventDefault();
 

@@ -161,6 +161,14 @@
             //add instance of paddle
             paddle1 = new Paddle(10);//10 pixel far from left side wall
             paddle2 = new Paddle(boardWidth - 10);//10 pixel far from right side wall
+
+            //accept keyboard typing
+            document.addEventListener("keydown", function(e){
+                e.preventDeafault();
+                //invoke eventlistener with canceling default processing
+                //in this case, you can control paddle without scrolling of deafault keydown function in your browser.
+            });
+
             //to preparing to render, get 2d context by using this below
             context = canvas.getContext("2d");
 

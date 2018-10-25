@@ -126,7 +126,7 @@
         }
 
         //this is for paddle part
-        function Paddle(x){
+        function Paddle(x, upKeyCode, downKeyCode){
             var self = this;//define as same with inside of Puck()
             
             //x-coordination must be defined by parameter of class
@@ -141,6 +141,9 @@
             //these values are set as true when the key has pushed, also set as false when the key has released
             self.upButtonPressed = false;
             self.downButtonPressed = false;
+            //set upKeyCode and downKeyCode which has passed from constructor
+            self.upKeyCode = upKeyCode;
+            self.downKeyCode = downKeyCode;
 
             //add onKeyDown and onKeyUp to control paddle by cursor keyboard
             self.onKeyDown = function(keyCode){//keyCode identify which key has been typed

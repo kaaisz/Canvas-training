@@ -136,7 +136,11 @@
             //define width and height for make paddle
             self.halfWidth = 5;
             self.halfHeight = 20;
-            self.moveSpeed = 0.5;
+            self.moveSpeed = 0.5;//define paddle speed
+            //this is for identify either key has been pushed or not
+            //these values are set as true when the key has pushed, also set as false when the key has released
+            self.upButtonPressed = false;
+            self.downButtonPressed = false;
 
             //add onKeyDown and onKeyUp to control paddle by cursor keyboard
             self.onKeyDown = function(keyCode){//keyCode identify which key has been typed

@@ -168,7 +168,13 @@
 
             //to link key event and paddle
             self.update = function(dt){//dt - elapsed time from last frame
-                //processing
+                //processing(basepoint is on left-top)
+                if(self.upButtonPressed){
+                    self.y -= self.moveSpeed * dt;//the more going up, the more distance will be added
+                }
+                if(self.downButtonPressed){
+                    self.y +=  self.moveSpeed * dt;//the more going down, the more distance will be reduced
+                }
             };
 
             //add function for rendering
